@@ -26,7 +26,7 @@ services:
       # Учетные данные, которые можно будет переопределить
       - POSTGRES_USER=django_user
       - POSTGRES_PASSWORD=django_password
-      - POSTGRES_DB=django_db
+      - POSTGRES_DB=django_cook
 
 volumes:
   postgres_volume:

@@ -12,8 +12,8 @@ def index(request):
     search = search_recipe()
     if request.method == 'POST':
         try:
-            recipes = Ingridient.objects.get(id=int(request.POST['value'])).recipes.all().order_by('publish_date')
-        except ValueError:
+            recipes = Ingridient.objects.get(id=int(request.POST['value'])).recipes.all()
+        except:
             recipes_tmp = Recipe.objects.all().order_by('publish_date')
             recipes = []
             for recipe in recipes_tmp:

@@ -8,11 +8,14 @@ from django.contrib.auth.models import User
 class filter_ingridient(forms.Form):
     INGR = []
     tmp = []
-    ingridients = Ingridient.objects.all().order_by('title')
-    for ingridient in ingridients:
-        INGR.append((ingridient.pk, ingridient.title),)
-    value = forms.ChoiceField(label='', choices=INGR, widget=forms.Select(attrs={'class': 'form-select indent'}))
-
+    try:
+        ingridients = Ingridient.objects.all().order_by('title')
+        for ingridient in ingridients:
+            INGR.append((ingridient.pk, ingridient.title),)
+        value = forms.ChoiceField(label='', choices=INGR, widget=forms.Select(attrs={'class': 'form-select indent'}))
+    except:
+        INGR.append(())
+        value = forms.ChoiceField(label='', choices=INGR, widget=forms.Select(attrs={'class': 'form-select indent'}))
 
 class search_recipe(forms.Form):
     value = forms.CharField(max_length=50, label='', widget=forms.TextInput(attrs={'class': 'form-control indent', 'placeholder': 'Search recipe'}))
