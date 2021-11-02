@@ -36,6 +36,7 @@ def registration(request):
         if check_register.is_valid():
             new_user = check_register.save(commit=False)
             new_user.set_password(check_register.cleaned_data['password'])
+            new_user.last_login = timezone.now()
             new_user.save()
             return render(request, 'book/registr_done.html', {"new_user": new_user})
         else:

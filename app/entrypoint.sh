@@ -15,9 +15,6 @@ fi
 # Удаляем все старые данные
 python manage.py flush --no-input
 # Выполняем миграции
-python manage.py migrate
-python manage.py makemigrations book
-python manage.py migrate book
 
 
 exec "$@"
